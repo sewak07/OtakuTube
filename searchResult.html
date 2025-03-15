@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        body {
+            background-color: #0056b3;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .searchResults {
+            margin: 20px;
+        }
+        .animeCard {
+            display: inline-block;
+            height:500px;
+            width: 300px;
+            background: #222;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        .animeCard img {
+            height:400px;
+            width: 100%;
+            border-radius: 5px;
+        }
+        .animeCard a {
+            display: block;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .back {
+            text-decoration: none;
+            color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Search Results</h1>
+        <a href="index.html" class="back">Back to Home</a>
+    </header>
+
+    <div class="searchResults">
+        <h2>Results for: <span id="searchTerm"></span></h2>
+        <div id="animeResults"></div>
+    </div>
+
+    <script>
+        let searchQuery = localStorage.getItem("searchQuery");
+
+        if (searchQuery) {
+            document.getElementById("searchTerm").innerText = searchQuery;
+
+            fetch(`https://api.jikan.moe/v4/anime?q=${searchQuery}`)
+                .then(response => response.json())
+                .then(data => {
+                    let resultsContainer = document.getElementById("animeResults");
+                    resultsContainer.innerHTML = "";
+
+                    if (data.data.length > 0) {
+                        data.data.forEach(anime => {
+                            let animeCard = `
+                                <div class="animeCard">
+                                    <img src="${anime.images.jpg.image_url}" alt="${anime.title}"><br><br>
+                                    <h3>${anime.title}</h3><br>
+                                   <button class="readMore" data-id="${anime.mal_id}">Read more</button>
+                                </div>
+                            `;
+                            resultsContainer.innerHTML += animeCard;
+                        });
+
+                        // Add event listener for "Read more" buttons
+                        const readMoreButtons = document.querySelectorAll('.readMore');
+                        readMoreButtons.forEach(button => {
+                            button.addEventListener('click', (event) => {
+                                const animeId = event.target.getAttribute('data-id');
+                                window.location.href = `search.html?id=${animeId}`;
+                            });
+                        });
+
+                    } else {
+                        resultsContainer.innerHTML = "<p>No results found.</p>";
+                    }
+                })
+                .catch(error => console.error("Error fetching data:", error));
+        } else {
+            document.getElementById("animeResults").innerHTML = "<p>No search query provided.</p>";
+        }
+    </script>
+</body>
+</html>

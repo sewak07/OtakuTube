@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+               *{
+    margin:0px;
+    padding:0px;
+}
+body{
+    color:rgb(139, 55, 217);    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: rgb(1, 1, 16);
+    
+}
+
+header{
+    background-color: rgb(8, 8, 52);
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px;
+}
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav .back {
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out, transform 0.2s ease;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+nav .back:hover {
+    background-color: rgb(139, 55, 217);
+    color: blanchedalmond;
+    transform: translateY(-2px);
+}
+
+nav .back i {
+    font-size: 16px;
+}
+
+nav .backSmall {
+    display: none;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    transition: background 0.3s ease-in-out;
+}
+
+nav .backSmall:hover {
+    background-color: rgb(139, 55, 217);
+    color: blanchedalmond;
+}
+footer{
+    margin-top: 40px;
+   border-top: 3px solid orangered;
+   padding:10px;
+}
+footer h3{
+    text-align: center;
+    margin-top: 20px;
+}
+.footerNav{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    gap:25px;
+}
+footer .home{
+    margin-top: 10px;
+    color:beige;
+    text-decoration: none;
+    transition: 0.3s;
+    
+}
+footer .home:hover{
+    color: orangered;
+    text-decoration: underline;
+    transform: scale(1.07);
+}
+
+footer .popular{
+    margin-top: 10px;
+    color:beige;
+    text-decoration: none;
+    transition: 0.3s;
+    
+}
+footer .popular:hover{
+    color: orangered;
+    text-decoration: underline;
+    transform: scale(1.07);
+}
+.footerContact {
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.footerContact h3 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+
+.footerContact a {
+    display: inline-block;
+    margin: 10px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+
+
+
+.footerContact a:hover {
+    color: orangered;
+    text-decoration: underline;
+    transform: scale(1.07);
+}
+
+.footerContact p {
+    margin-top: 15px;
+    font-size: 14px;
+    opacity: 0.7;
+}
+.searchResults {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.searchResults h2 {
+    font-size: 24px;
+    color:antiquewhite;
+}
+
+#animeResults {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    background-color: rgb(25, 25, 47);
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 95%;
+    border:none;
+    box-shadow:rgb(8, 8, 23); 
+}
+
+.animeCard {
+    background: rgb(23, 23, 30);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 250px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.animeCard:hover {
+    transform: translateY(-5px);
+}
+
+.animeCard img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.animeCard h3 {
+    font-size: 18px;
+    color:#fff;
+    margin: 10px 0;
+}
+
+.readMore, .trailer-link button{
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease-in-out;
+}
+.readMore:hover, .trailer-link button:hover{
+    background: #032851;
+}
+
+/* Base responsive settings to prevent x-axis overflow */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* Responsive header */
+@media screen and (max-width: 768px) {
+    
+    
+    nav .back {
+        display: none;
+    }
+    
+    nav .backSmall {
+        display: inline-block;
+        color: white;
+        font-size: 24px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    nav .backSmall:hover{
+        color:orangered;
+    }
+    
+    nav .backSmall i {
+        display: inline-block;
+    }
+}
+
+/* Responsive search results section */
+@media screen and (max-width: 992px) {
+    .searchResults {
+        padding: 0 10px;
+    }
+    
+    #animeResults {
+        width: 100%;
+        gap: 20px;
+        padding: 15px;
+    }
+    
+    .animeCard {
+        width: 220px;
+    }
+    
+    .animeCard img {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .searchResults h2 {
+        font-size: 20px;
+    }
+    
+    #animeResults {
+        gap: 15px;
+    }
+    
+    .animeCard {
+        width: 180px;
+    }
+    
+    .animeCard img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .animeCard h3 {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    #animeResults {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .animeCard {
+        width: 85%;
+        max-width: 300px;
+    }
+    
+    .animeCard img {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .readMore, .trailer-link button {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+   
+}
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Search Results</h1>
+    <nav>
+        <a href="index.html" class="backSmall"><i class="fas fa-home"></i></a>
+        <a href="index.html" class="back"><i class="fas fa-home"></i> Go back to home</a>
+    </nav>
+    
+</header>
+
+<div class="searchResults">
+    <h2>Results for: <span id="searchTerm"></span></h2>
+    <div id="animeResults"></div>
+</div>
+<footer>
+    <h3>Explore</h3> 
+    <div class="footerNav">  
+    <a href="index.html" class="home">Home</a>
+    <a  href="popular.html" class="popular">Popular</a><br><br><br>
+</div>   
+    <h3>Contact With Us </h3>
+    <div class="footerContact">
+        <a href="https://x.com/aizewak" class="twitter">
+            Twitter
+        </a>
+    <a href="https://www.youtube.com/channel/UCuN5GSvsZio89TaPR38H3ww">youtube</a><br><br>
+    Help us by following us<br>
+    @copyright by Otaku Tube.
+    </div>
+
+    
+</footer>   
+<script>
+    document.addEventListener("DOMContentLoaded", async () => {
+        const searchQuery = localStorage.getItem("searchQuery");
+
+        if (searchQuery) {
+            document.getElementById("searchTerm").innerText = searchQuery;
+
+            try {
+                const response = await fetch(`https://api.jikan.moe/v4/anime?q=${searchQuery}`);
+                
+                const data = await response.json();
+                console.log(data);
+
+                const resultsContainer = document.getElementById("animeResults");
+                resultsContainer.innerHTML = ""; // Clear previous results
+                
+                if (data.data.length > 0) {
+                    data.data.forEach(anime => {
+                        const animeCard = `
+                            <div class="animeCard">
+                                <img src="${anime.images.jpg.image_url}" alt="${anime.title}">
+                                <h3>${anime.title}</h3><br>
+                                <button class="readMore" data-id="${anime.mal_id}">Read more</button>
+                                                    
+                    ${anime.trailer?.embed_url ? `<a href="${anime.trailer.embed_url}" target="_blank" class="trailer-link"><button>Watch Trailer</button></a>` : '<p>No Trailer Available</p>'}
+                    
+
+                            </div>
+                        `;
+                        resultsContainer.innerHTML += animeCard;
+                    });
+                } else {
+                    resultsContainer.innerHTML = "<p>No results found.</p>";
+                }
+
+                // Add event listener to "Read more" buttons
+                document.querySelectorAll(".readMore").forEach(button => {
+                    button.addEventListener("click", (event) => {
+                        const animeId = event.target.getAttribute("data-id");
+                        window.location.href = `moreInfo.html?id=${animeId}`; // Redirect to the moreInfo page
+                    });
+                });
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                document.getElementById("animeResults").innerHTML = "<p>Error fetching anime data.</p>";
+            }
+        } else {
+            document.getElementById("animeResults").innerHTML = "<p>No search query provided.</p>";
+        }
+    });
+</script>
+
+</body>
+</html>

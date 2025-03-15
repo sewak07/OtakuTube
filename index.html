@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otaku Tube</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+<style>
+    *{
+    margin:0px;
+    padding:0px;
+}
+body{
+    color:rgb(139, 55, 217);    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: rgb(1, 1, 16);
+   
+    
+}
+
+header{
+    background-color: rgb(8, 8, 52);
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px;
+   
+
+
+}
+header img{
+    height:50px;
+    width:50px;
+}
+input{
+    height:30px;
+    width:30%;
+    border-radius: 5px;
+    padding:5px;
+}
+
+button{
+    cursor:pointer;
+}
+.searchBtn{
+    margin-right: 30px;
+    border:none;
+    background-color: blue;
+    padding:10px;
+    border-radius:5px;
+    color:aliceblue;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+}
+.searchBtn:hover{
+    background-color: antiquewhite;
+    color:blue;
+}
+.menu-btn{
+    display:none;
+}
+ nav .home, nav .about, nav .popular{
+    color: aliceblue;
+    margin-right:40px;
+    padding:10px;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+    
+ }
+ nav .home:hover, nav .about:hover, nav .popular:hover{
+    background-color:rgb(139, 55, 217);
+    padding:10px;
+    border-radius: 5px;
+    color:orangered;
+ }
+ .display{
+    margin-top:15px;
+    
+ }
+ 
+ .display video{
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+    width: 95vw;
+    height: 40vw;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgb(2, 2, 35); 
+ }
+
+
+ /* General styling for recommendation sections */
+.recommendations, .mangaRecomendations {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 95%;
+    background-color: rgb(25, 25, 47);
+    border:none;
+    box-shadow:rgb(8, 8, 23); 
+   
+}
+
+/* Titles */
+.recommendations h2, .mangaRecomendations h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* Content containers */
+.mainContent, .mangaMainContent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
+/* Inside recommendation cards */
+.insideRecommendations, .insideMangaRecommendations {
+    background: rgb(23, 23, 30);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    width: 250px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.insideRecommendations:hover, .insideMangaRecommendations:hover {
+    transform: scale(1.05);
+   
+}
+
+/* Images */
+.recommendationsImage, .manga-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Titles */
+.insideRecommendations h4, .insideMangaRecommendations h3 {
+    font-size: 18px;
+    color:aliceblue;
+}
+
+/* Read More Button */
+.readMore {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease-in-out;
+}
+
+.readMore:hover {
+    background: #032851;
+}
+
+.pagination, .mangaPagination{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap:15px;
+}
+.pagination button, .mangaPagination button{
+    box-shadow: 0px 0px 10px rgb(3, 3, 68);
+    border:none;
+    background-color:#fff;
+    padding:15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+    
+}
+.pagination button:hover{
+    background-color: #032851;
+    color:#fff;
+    transform: scale(1.1);
+}
+.mangaPagination button:hover{
+    background-color: #032851;
+    color:#fff;
+    transform: scale(1.07);
+}
+.aboutUs {
+    width: 90%;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+}
+
+.aboutUs h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 10px;
+}
+.aboutUsContent{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+.aboutUs .image {
+    width: 50vw;
+    max-width: 400px;
+    height: 50vw;  
+}
+
+
+.aboutUs .texts {
+    font-size: 18px;
+    color:rgb(161, 185, 185);
+    text-align: left;
+    line-height: 1.6;
+    text-align: left;
+   
+}
+
+.aboutUs .texts p {
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+
+.aboutUs .texts br {
+    display: block;
+    margin-bottom: 8px;
+}
+footer{
+   border-top: 3px solid orangered;
+   padding:10px;
+}
+footer h3{
+    text-align: center;
+    margin-top: 20px;
+}
+.footerNav{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    gap:25px;
+}
+footer .home{
+    margin-top: 10px;
+    color:beige;
+    text-decoration: none;
+    transition: 0.3s;
+    
+}
+footer .home:hover{
+    color: orangered;
+    text-decoration: underline;
+    transform: scale(1.07);
+}
+footer .about{
+    margin-top: 10px;
+    color:beige;
+    text-decoration: none;
+    transition: 0.3s;
+    
+}
+footer .about:hover{
+    color: orangered;
+    text-decoration: underline;
+    transform: scale(1.07);
+}
+footer .popular{
+    margin-top: 10px;
+    color:beige;
+    text-decoration: none;
+    transition: 0.3s;
+    
+}
+footer .popular:hover{
+    color: orangered;
+    text-decoration: underline;
+    transform: scale(1.07);
+}
+.footerContact {
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.footerContact h3 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+
+.footerContact a {
+    display: inline-block;
+    margin: 10px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+
+
+
+.footerContact a:hover {
+    color: orangered;
+    text-decoration: underline;
+    transform: scale(1.07);
+}
+
+.footerContact p {
+    margin-top: 15px;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* Base responsive settings to prevent x-axis overflow */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* Responsive header */
+@media screen and (max-width: 992px) {
+    header {
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr; /* Added an extra column */
+    grid-template-rows: auto auto; /* Adjust rows dynamically */
+    grid-template-areas: 
+        "header-img header-h1 header-h1"
+        "header-input header-input searchBtn"
+        "nav nav nav";
+    text-align: center;
+    padding: 15px 10px;
+}
+
+header img {
+    grid-area: header-img;
+}
+
+header h1 {
+    grid-area: header-h1;
+}
+
+header input {
+    width: 90%;
+    margin: 15px 0;
+    grid-area: header-input;
+}
+
+.searchBtn {
+    margin-right: 0;
+    margin-top: 10px;
+    grid-area: searchBtn;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 15px;
+    grid-area: nav;
+}
+
+    nav .home, nav .about, nav .popular {
+        margin: 5px 15px;
+    }
+}
+
+/* Mobile navigation */
+@media screen and (max-width: 768px) {
+    .menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        color: rgb(139, 55, 217);
+        font-size: 24px;
+        cursor: pointer;
+    }
+    
+    nav {
+        width: 100%;
+        display: none; /* Hide by default, show with JavaScript */
+    }
+    
+    nav.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav .home, nav .about, nav .popular {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Video display responsive */
+@media screen and (max-width: 992px) {
+    .display video {
+        height: 50vw;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .display video {
+        height: 60vw;
+    }
+}
+
+/* Recommendation sections responsive */
+@media screen and (max-width: 1200px) {
+    .mainContent, .mangaMainContent {
+        gap: 20px;
+    }
+    
+    .insideRecommendations, .insideMangaRecommendations {
+        width: 220px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .recommendations, .mangaRecomendations {
+        width: 90%;
+        padding: 15px;
+    }
+    
+    .insideRecommendations, .insideMangaRecommendations {
+        width: 180px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .mainContent, .mangaMainContent {
+        gap: 15px;
+    }
+    
+    .insideRecommendations, .insideMangaRecommendations {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* About us section responsive */
+@media screen and (max-width: 992px) {
+    .aboutUs {
+        width: 95%;
+        padding: 20px;
+    }
+    
+    .aboutUsContent {
+        flex-direction: column;
+    }
+    
+    .aboutUs .image {
+        width: 80%;
+        height: auto;
+        max-width: 300px;
+        margin: 0 auto 20px;
+    }
+    
+    .aboutUs .texts {
+        font-size: 16px;
+    }
+}
+
+/* Footer responsive */
+@media screen and (max-width: 768px) {
+    .footerNav {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    
+    footer .home, footer .about, footer .popular {
+        margin: 5px 0;
+    }
+    
+    .footerContact a {
+        display: block;
+        margin: 15px auto;
+    }
+}
+
+/* Form inputs responsive */
+@media screen and (max-width: 576px) {
+    input {
+        width: 85%;
+    }
+}
+
+/* Pagination responsive */
+@media screen and (max-width: 576px) {
+    .pagination button, .mangaPagination button {
+        padding: 10px;
+        font-size: 12px;
+    }
+}
+
+
+</style>
+</head>
+<div class="container">
+    <header>
+        <img src="Gojo-Background-PNG.png">
+        <h1>Otaku Tube</h1>
+        <input type="text" placeholder="search anime here....">
+        <button class="searchBtn">Search</button>
+
+        <div class="menu-btn" onclick="toggleMenu()">&#9776;</div>
+        <nav>
+            <a style="text-decoration: none" href="index.html" class="home"><i class="fas fa-home"></i> Home</a>
+            <a style="text-decoration: none" href="#about" class="about"><i class="fas fa-info-circle"></i> About</a>
+            <a style="text-decoration: none" href="popular.html" class="popular"><i class="fas fa-star"></i> Popular</a>
+        </nav>
+    </header>
+    <div class="display">
+        <video autoplay loop muted playsinline>
+            <source src="Itachi Uchiha Moonlight Live Wallpaper .mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+    </div>
+    <div class="recommendations">
+        <h2>Anime Recommendations</h2>
+        <div class="mainContent">
+        </div>
+        <div class="pagination"></div>
+    </div>
+    <div class="mangaRecomendations">
+        <center><h2>Manga Recommendations</h2></center>
+        <div class="mangaMainContent"></div>
+        <div class="mangaPagination"></div>
+    </div>
+    <div id="about" class="aboutUs">
+     <center><h2>About Us</h2> </center> 
+     <div class="aboutUsContent">
+      <img class="image" src="Gojo-Background-PNG.png">
+      <div class="texts">
+        <p class="welcome">
+            Welcome to Otaku Tube, your one-stop hub for everything 
+            anime! Whether you're a long-time otaku or just stepping 
+            into the vast<br> world of anime, we’ve built this platform to   
+            fuel your passion and keep you updated with all things anime.
+        </p><br><br>
+        
+            What We Offer:<br>
+Search Any Anime: Looking for details about a specific anime? Use our search feature to find descriptions, ratings, and more!<br><br>
+Top Airing Anime: Stay in the loop with the hottest anime currently airing.<br>
+Top Movies: Discover the best anime movies loved by fans worldwide.<br>
+Top Manga: Explore the most popular manga that are taking the community by storm.<br>
+Anime Content: Access a growing collection of wallpapers, clips, and edits to celebrate your favorite anime.<br><br>
+Why Otaku Tube?<br>
+Comprehensive Search: Find accurate descriptions and info about any anime you love.<br>
+Latest Rankings: Always updated lists of top airing anime, movies, and manga.<br>
+Community for Otakus: Built by anime lovers, for anime lovers!<br><br>
+Join Otaku Tube and dive into the ever-expanding anime universe with us!
+
+Your Journey Into Anime Starts Here.
+
+— Team Otaku Tube
+</div>
+</div>
+
+    </div>
+    <footer>
+        <h3>Explore</h3> 
+        <div class="footerNav">  
+        <a href="index.html" class="home">Home</a>
+        <a  href="#about" class="about">About</a>
+        <a  href="popular.html" class="popular">Popular</a><br><br><br>
+    </div>   
+        <h3>Contact With Us </h3>
+        <div class="footerContact">
+            <a href="https://x.com/aizewak" class="twitter">
+                Twitter
+            </a>
+        <a href="https://www.youtube.com/channel/UCuN5GSvsZio89TaPR38H3ww">youtube</a><br><br>
+        Help us by following us<br>
+        @copyright by Otaku Tube.
+        </div>
+
+        
+    </footer>
+</div>
+<script src="script.js"></script>
+<script>
+function toggleMenu() {
+    const nav = document.querySelector('header nav');
+    const menuBtn = document.querySelector('.menu-btn');
+    
+    nav.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popular</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<style>
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: rgb(139, 55, 217);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: rgb(1, 1, 16);
+    text-align: center;
+}
+
+/* Header */
+header {
+    background-color: rgb(8, 8, 52);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+
+nav .back {
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+    color: aliceblue;
+}
+
+nav .back:hover {
+    background-color: rgb(139, 55, 217);
+    color: blanchedalmond;
+}
+
+/* Main Content */
+.container {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+/* Buttons Section */
+.top-section {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.top-section button {
+    background-color: rgb(139, 55, 217);
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.top-section button:hover {
+    background-color: white;
+    color:rgb(139, 55, 217);
+}
+
+/* Grid Container */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;  
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 97%;
+    background-color: rgb(25, 25, 47);
+    border: none;
+    box-shadow: rgb(8, 8, 23);
+}
+
+/* Cards */
+.card {
+    border-radius: 15px;
+    padding: 20px;
+    background: rgb(23, 23, 30);
+    color: white;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.card h4 {
+    color: rgb(156, 142, 13);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Trailer Button */
+.trailer-link {
+    display: inline-block;
+    background: orangered;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.trailer-link:hover {
+    background: darkred;
+    color: orangered;
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    border-top: 3px solid orangered;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.footerNav {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.footerNav a {
+    color: beige;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footerNav a:hover {
+    color: orangered;
+    text-decoration: underline;
+    transform: scale(1.07);
+}
+
+.footerContact {
+    margin-top: 20px;
+}
+
+.footerContact a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+.footerContact a:hover {
+    color: orangered;
+    text-decoration: underline;
+    transform: scale(1.07);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+
+    
+    .grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .top-section {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    nav .back{
+  display:none;
+}
+    
+    nav .backSmall {
+        display: inline-block;
+        font-size: 18px;
+    }
+    nav .backSmall:hover{
+        color:orangered;
+    }
+
+    .top-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+        
+    }
+    .card img {
+        max-height: 250px;
+        max-width: 250px;
+    }
+
+    footer {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px;
+        text-align: center;
+    }
+nav .back{
+  display:none;
+}
+    
+    nav .backSmall {
+        display: inline-block;
+        font-size: 18px;
+    }
+    nav .backSmall:hover{
+        color:orangered;
+    }
+    .top-section button {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .grid-container {
+        width: 100%;
+        
+    }
+
+    
+    .card img {
+        height: 180px;
+        width:180px;
+
+    }
+
+    footer {
+        font-size: 14px;
+    }   
+}
+
+.backSmall{
+    display: none;
+}
+
+</style>
+
+    
+</head>
+<body>
+   
+        <header>
+            <h1>Otaku Tube</h1>
+            <nav>
+                <a href="index.html" class="backSmall"><i class="fas fa-home"></i></a>
+                <a href="index.html" class="back"><i class="fas fa-home"></i> Go back to home</a>
+            </nav>
+        </header>
+        <div class="container">
+        <div class="top-section">
+            <button class="anime">Top Airing Anime</button>
+            <button class="movie">Popular Movies</button>
+            <button class="popularAnime">Popular Anime</button>
+        </div>
+
+        <div class="grid-container topAiring"></div>
+        <div class="grid-container topMovie"></div>
+        <div class="grid-container topPopularAnime"></div>
+    </div>
+    <footer>
+        <h3>Explore</h3> 
+        <div class="footerNav">  
+        <a href="index.html" class="home">Home</a>
+        <a  href="popular.html" class="popular">Popular</a><br><br><br>
+    </div>   
+        <h3>Contact With Us </h3>
+        <div class="footerContact">
+            <a href="https://x.com/aizewak" class="twitter">
+                Twitter
+            </a>
+        <a href="https://www.youtube.com/channel/UCuN5GSvsZio89TaPR38H3ww">youtube</a><br><br>
+        Help us by following us<br>
+        @copyright by Otaku Tube.
+        </div>
+
+        
+    </footer>   
+
+    <script>
+let topAiring = document.querySelector(".topAiring");
+let topMovie = document.querySelector(".topMovie");
+let topPopularAnime=document.querySelector(".topPopularAnime");
+let animeBtn = document.querySelector(".anime");
+let movieBtn = document.querySelector(".movie");
+let popularAnimeBtn = document.querySelector(".popularAnime");
+
+const fetchAnime = async () => {
+    topAiring.innerHTML = ""; // Clear previous content
+    let url = "https://api.jikan.moe/v4/top/anime?filter=airing";
+    try {
+        let response = await fetch(url);
+        let data = await response.json();
+        console.log(data);
+        data.data.forEach(anime => {
+            const genres = anime.genres.map(genre => genre.name).join(', ') || 'No genres available';
+            topAiring.innerHTML += `
+                <div class="card">
+                    <img src='${anime.images.jpg.image_url}' alt='${anime.title_english || anime.title}'>
+                    <h4>${anime.title_english || anime.title}</h4>
+                    <p>Rating: ${anime.rating}</p>
+                    <p>Score: ${anime.score}</p>
+                    <p><strong>Genres:</strong> ${genres}</p>
+                    <center><br>
+                    ${anime.trailer?.embed_url ? `<a href="${anime.trailer.embed_url}" target="_blank" class="trailer-link">Watch Trailer</a>` : '<p>No Trailer Available</p>'}
+                    <center>
+                </div>
+            `;
+        });
+    } catch (error) {
+        console.log("Error occurred:", error);
+    }
+};
+
+const fetchMovies = async () => {
+    topAiring.innerHTML = ""; // Clear previous content
+    topPopularAnime.innerHTML="";
+    let url = "https://api.jikan.moe/v4/top/anime?type=movie"; // Corrected API URL
+
+    try {
+        let response = await fetch(url);
+        console.log(response);
+        let data = await response.json();
+        console.log(data);
+        
+        data.data.forEach(movie => {
+            const genres = movie.genres.map(genre => genre.name).join(', ') || 'No genres available';
+            topAiring.innerHTML += `
+                <div class="card">
+                    <img src='${movie.images.jpg.image_url}' alt='${movie.title_english || movie.title}'>
+                    <h4>${movie.title_english || movie.title}</h4>
+                    <p>Release Date: ${movie.aired.string}</p>
+                    <p>Rating: ${movie.score}</p>
+                    <p><strong>Genres:</strong> ${genres}</p>
+                    <center><br>
+                    ${movie.trailer?.embed_url ? `<a href="${movie.trailer.embed_url}" target="_blank" class="trailer-link">Watch Trailer</a>` : '<p>No Trailer Available</p>'}
+                    </center>
+                </div>
+            `;
+        });
+    } catch (error) {
+        console.log("Error occurred:", error);
+    }
+};
+
+
+
+fetchAnime();
+
+const fetchPopular = async () => {
+    
+    topMovie.innerHTML="";
+    topAiring.innerHTML="";
+    let url = "https://api.jikan.moe/v4/top/anime?filter=bypopularity";
+
+    try {
+        let response = await fetch(url);
+        let data = await response.json();
+        console.log(data);
+
+        data.data.forEach(pop => {  
+            const genres = pop.genres.map(genre => genre.name).join(', ') || 'No genres available';
+
+            topPopularAnime.innerHTML += `
+                <div class="card">
+                    <img src='${pop.images.jpg.image_url}' alt='${pop.title_english || pop.title}'>
+                    <h4>${pop.title_english || pop.title}</h4>
+                    <p>Release Date: ${pop.aired.string || 'N/A'}</p>
+                    <p>Rating: ${pop.score || 'N/A'}</p>
+                    <p><strong>Genres:</strong> ${genres}</p>
+                    <center><br>
+                    ${pop.trailer?.embed_url ? `<a href="${pop.trailer.embed_url}" target="_blank" class="trailer-link">Watch Trailer</a>` : '<p>No Trailer Available</p>'}
+                    </center>
+                </div>
+            `;
+        });
+    } catch (error) {
+        console.log("Error occurred:", error);
+    }
+};
+
+
+animeBtn.addEventListener("click", fetchAnime);
+movieBtn.addEventListener("click", fetchMovies);
+popularAnimeBtn.addEventListener("click", fetchPopular);
+
+
+    </script>
+</body>
+
+</html>
